@@ -98,5 +98,14 @@ COPY wait-for-psql.py /usr/local/bin/wait-for-psql.py
 # Set default user when running the container
 USER odoo
 
+# : Agregando librerias externas
+# Usar la imagen oficial de Odoo como base
+FROM odoo:16.0
+
+# Instalar dependencias adicionales
+USER root
+RUN pip3 install astor paramiko
+USER odoo
+# ----------------------------
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["odoo"]
