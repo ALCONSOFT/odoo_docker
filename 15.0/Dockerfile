@@ -81,6 +81,10 @@ ENV ODOO_RC /etc/odoo/odoo.conf
 
 COPY wait-for-psql.py /usr/local/bin/wait-for-psql.py
 
+# Instalar dependencias adicionales
+USER root
+RUN pip3 install astor paramiko html2text
+
 # Set default user when running the container
 USER odoo
 
