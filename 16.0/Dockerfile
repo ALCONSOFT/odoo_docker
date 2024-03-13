@@ -104,7 +104,7 @@ FROM odoo:16.0
 
 # Instalar dependencias adicionales
 USER root
-RUN pip3 install astor paramiko
+RUN pip3 install astor paramiko html2text
 USER odoo
 # ----------------------------
 ENTRYPOINT ["/entrypoint.sh"]
