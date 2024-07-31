@@ -69,7 +69,8 @@ RUN npm install -g rtlcss
 
 # Install Odoo
 ENV ODOO_VERSION 16.0
-ARG ODOO_RELEASE=20240126
+# ARG ODOO_RELEASE=20240126
+ARG ODOO_RELEASE=20240731
 ARG ODOO_SHA=7774e76d4044e675b9d1ca64832e6a581d90a9b6
 RUN curl -o odoo.deb -sSL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/odoo_${ODOO_VERSION}.${ODOO_RELEASE}_all.deb \
     && echo "${ODOO_SHA} odoo.deb" | sha1sum -c - \
@@ -104,6 +105,12 @@ FROM odoo:16.0
 
 # Instalar dependencias adicionales
 USER root
+# Actualiza el sistema y instala Java
+RUN apt-get update && apt-get install -y openjdk-11-jdk
+# Configura la variable de entorno JAVA_HOME
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
+ENV PATH $JAVA_HOME/bin:$PATH
+# - - - - 
 RUN pip3 install astor paramiko html2text jaydebeapi
 USER odoo
 # ----------------------------
