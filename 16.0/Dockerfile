@@ -112,7 +112,7 @@ RUN apt-get update && apt-get install -y openjdk-11-jdk
 # Configura la variable de entorno JAVA_HOME
 ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 ENV PATH $JAVA_HOME/bin:$PATH
-ENV JVM_OPTS="-Xms512m -Xmx6g"
+ENV JVM_OPTS="-Xms256m -Xmx2g"
 # - - - - 
 RUN pip3 install astor paramiko html2text jaydebeapi
 USER odoo
