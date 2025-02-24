@@ -114,7 +114,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 ENV PATH $JAVA_HOME/bin:$PATH
 ENV JVM_OPTS="-Xms256m -Xmx2g"
 # - - - - 
-RUN pip3 install astor paramiko html2text jaydebeapi
+RUN pip3 install astor paramiko html2text jaydebeapi user_agents
 USER odoo
 # ----------------------------
 ENTRYPOINT ["/entrypoint.sh"]
